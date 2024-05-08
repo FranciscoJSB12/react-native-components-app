@@ -1,4 +1,3 @@
-import { Switch } from 'react-native';
 import { CustomView } from '../../components/ui/CustomView';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useState } from 'react';

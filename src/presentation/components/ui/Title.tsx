@@ -20,7 +20,7 @@ export const Title = ({ text, safe = false, white = false }: Props) => {
         color: white ? 'white' : colors.text,
       }}
     >
-      Title
+      {text}
     </Text>
   );
 };

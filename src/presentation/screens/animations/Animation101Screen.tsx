@@ -1,26 +1,22 @@
-import { useRef } from 'react';
-import { View, StyleSheet, Pressable, Text, Animated } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Pressable,
+  Text,
+  Animated,
+  Easing,
+} from 'react-native';
 import { colors } from '../../../config/theme/theme';
+import { useAnimation } from '../../hooks/useAnimation';
 
 export const Animation101Screen = () => {
-  const animatedOpacity = useRef(new Animated.Value(0.4)).current;
-  //Animated.Value(0.4) 0 es transparente y 1 es full color, ojo no devuelve un valor númerico, para trabajar con animaciones hay que usar componentes que salgan del Animated, ejemplo, Animated.View
-
-  const fadeIn = () => {
-    Animated.timing(animatedOpacity, {
-      toValue: 1,
-      duration: 300,
-      useNativeDriver: true,
-    }).start(() => console.log('Ended'));
-  };
-
-  const fadeOut = () => {
-    Animated.timing(animatedOpacity, {
-      toValue: 0,
-      duration: 300,
-      useNativeDriver: true,
-    }).start(() => console.log('Ended'));
-  };
+  const {
+    animatedOpacity,
+    animatedTop,
+    fadeIn,
+    fadeOut,
+    startMovingTopPosition,
+  } = useAnimation();
 
   return (
     <View style={styles.container}>
@@ -29,19 +25,31 @@ export const Animation101Screen = () => {
           styles.purpleBox,
           {
             opacity: animatedOpacity,
+            transform: [
+              {
+                translateY: animatedTop,
+              },
+            ],
           },
         ]}
       />
 
       <Pressable
-        onPress={fadeIn}
+        onPress={() => {
+          fadeIn({});
+          startMovingTopPosition({
+            initialPosition: -100,
+            easing: Easing.elastic(1),
+            duration: 750,
+          });
+        }}
         style={{ marginTop: 10 }}
       >
         <Text>FadeIn</Text>
       </Pressable>
 
       <Pressable
-        onPress={fadeOut}
+        onPress={() => fadeOut({})}
         style={{ marginTop: 10 }}
       >
         <Text>FadeOut</Text>

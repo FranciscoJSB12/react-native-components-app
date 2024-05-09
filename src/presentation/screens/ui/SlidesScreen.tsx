@@ -126,7 +126,7 @@ const SlideItem = ({ item }: SlideItemProps) => {
     >
       <Image
         /*Como la variable img es del tipo imageSourcePropType se puede mandar sin el uri */
-        source={img}
+        source={require('../../assets/slide-3.png')}
         style={{
           width: width * 0.7,
           height: width * 0.7,

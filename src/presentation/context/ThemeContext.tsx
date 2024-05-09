@@ -1,11 +1,11 @@
 import { PropsWithChildren, createContext, useEffect, useState } from 'react';
-import { ThemeColors, darkColors, lightColors } from '../../config/theme/theme';
 import { AppState, Appearance, useColorScheme } from 'react-native';
 import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer,
 } from '@react-navigation/native';
+import { ThemeColors, darkColors, lightColors } from '../../config/theme/theme';
 
 type ThemeColor = 'light' | 'dark';
 
@@ -30,6 +30,7 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const colors = isDark ? darkColors : lightColors;
 
   useEffect(() => {
+    console.log(colorScheme);
     if (colorScheme === 'dark') {
       setCurrentTheme('dark');
     } else {
@@ -37,18 +38,17 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
     }
   }, [colorScheme]);
 
-  // useEffect(() => {
-  //   IMPORTANTE: esto nos sirve para saber el estado de la APP
-  //   const subscription = AppState.addEventListener('change', nextAppState => {
-  //     const colorScheme = Appearance.getColorScheme();
-  //     setCurrentTheme( colorScheme === 'dark' ? 'dark' : 'light')
+  /*useEffect(() => {
+    //IMPORTANTE: esto nos sirve para saber el estado de la APP, activa o inactiva
+    const subscription = AppState.addEventListener('change', nextAppState => {
+      const colorScheme = Appearance.getColorScheme();
+      setCurrentTheme(colorScheme === 'dark' ? 'dark' : 'light');
+    });
 
-  //   });
-
-  //   return () => {
-  //     subscription.remove();
-  //   };
-  // }, []);
+    return () => {
+      subscription.remove();
+    };
+  }, []);*/
 
   const setTheme = (theme: ThemeColor) => {
     setCurrentTheme(theme);

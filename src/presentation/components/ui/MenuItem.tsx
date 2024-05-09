@@ -62,7 +62,6 @@ export const MenuItem = ({
             }}
             color={colors.primary}
           />
-          ;
         </View>
       </Pressable>
 

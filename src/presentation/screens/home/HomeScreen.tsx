@@ -1,5 +1,4 @@
-import { View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { View, ScrollView } from 'react-native';
 import { Title } from '../../components/ui/Title';
 import { MenuItem } from '../../components/ui/MenuItem';
 import { CustomView } from '../../components/ui/CustomView';

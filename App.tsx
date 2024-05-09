@@ -1,11 +1,11 @@
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
+import { ThemeProvider } from './src/presentation/context/ThemeContext';
 import { StackNavigator } from './src/presentation/navigator/StackNavigator';
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <ThemeProvider>
       <StackNavigator />
-    </NavigationContainer>
+    </ThemeProvider>
   );
 }

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -7,10 +6,11 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { Card } from '../../components/ui/Card';
 import { CustomView } from '../../components/ui/CustomView';
 import { Title } from '../../components/ui/Title';
 import { globalStyles } from '../../../config/theme/theme';
+import { Card } from '../../components/ui/Card';
+import { useState } from 'react';
 
 export const TextInputScreen = () => {
   const [form, setForm] = useState({
@@ -26,9 +26,10 @@ export const TextInputScreen = () => {
       <ScrollView>
         <CustomView margin>
           <Title
-            safe
             text='Text Inputs'
+            safe
           />
+
           <Card>
             <TextInput
               style={globalStyles.input}
@@ -37,6 +38,7 @@ export const TextInputScreen = () => {
               autoCorrect={false}
               onChangeText={value => setForm({ ...form, name: value })}
             />
+
             <TextInput
               style={globalStyles.input}
               placeholder='Correo electrónico'
@@ -45,40 +47,44 @@ export const TextInputScreen = () => {
               keyboardType='email-address'
               onChangeText={value => setForm({ ...form, email: value })}
             />
+
             <TextInput
               style={globalStyles.input}
               placeholder='Teléfono'
-              keyboardType='email-address'
+              keyboardType='phone-pad'
               onChangeText={value => setForm({ ...form, phone: value })}
             />
           </Card>
+
           <View style={{ height: 10 }} />
+
           <Card>
             <Text>{JSON.stringify(form, null, 2)}</Text>
-          </Card>
-          <Card>
+            <Text>{JSON.stringify(form, null, 2)}</Text>
+            <Text>{JSON.stringify(form, null, 2)}</Text>
+            <Text>{JSON.stringify(form, null, 2)}</Text>
+            <Text>{JSON.stringify(form, null, 2)}</Text>
+            <Text>{JSON.stringify(form, null, 2)}</Text>
+            <Text>{JSON.stringify(form, null, 2)}</Text>
+            <Text>{JSON.stringify(form, null, 2)}</Text>
+            <Text>{JSON.stringify(form, null, 2)}</Text>
+            <Text>{JSON.stringify(form, null, 2)}</Text>
             <Text>{JSON.stringify(form, null, 2)}</Text>
           </Card>
-          <Card>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-          </Card>
-          <Card>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-          </Card>
-          <Card>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-          </Card>
-          <View style={{ height: 50 }} />
+
+          <View style={{ height: 20 }} />
+
           <Card>
             <TextInput
               style={globalStyles.input}
               placeholder='Teléfono'
-              keyboardType='email-address'
+              keyboardType='phone-pad'
               onChangeText={value => setForm({ ...form, phone: value })}
             />
           </Card>
         </CustomView>
-        <View style={{ height: 50 }} />
+
+        <View style={{ height: 20 }} />
       </ScrollView>
     </KeyboardAvoidingView>
   );

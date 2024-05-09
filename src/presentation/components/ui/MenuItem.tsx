@@ -1,8 +1,9 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { colors } from '../../../config/theme/theme';
 import { useNavigation } from '@react-navigation/native';
 import { Separator } from './Separator';
+import { useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
 
 interface Props {
   name: string;
@@ -12,8 +13,17 @@ interface Props {
   isLast?: boolean;
 }
 
-export const MenuItem = ({ name, icon, component, isFirst, isLast }: Props) => {
+export const MenuItem = ({
+  name,
+  icon,
+  component,
+  isFirst = false,
+  isLast = false,
+}: Props) => {
   const navigation = useNavigation<any>();
+
+  const { colors } = useContext(ThemeContext);
+
   return (
     <>
       <Pressable onPress={() => navigation.navigate(component)}>
@@ -52,8 +62,10 @@ export const MenuItem = ({ name, icon, component, isFirst, isLast }: Props) => {
             }}
             color={colors.primary}
           />
+          ;
         </View>
       </Pressable>
+
       {!isLast && <Separator />}
     </>
   );

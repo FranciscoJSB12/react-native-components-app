@@ -9,14 +9,23 @@ import { PullToRefreshScreen } from '../screens/ui/PullToFreshScreen';
 import { CustomSectionListScreen } from '../screens/ui/CustomSectionListScreen';
 import { ModalScreen } from '../screens/ui/ModalScreen';
 import { InfiniteScrollScreen } from '../screens/ui/InfinteScrollScreen';
+import { SlidesScreen } from '../screens/ui/SlidesScreen';
+import { ChangeThemeScreen } from '../screens/theme/ChangeThemeScreen';
+import { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 
 const Stack = createStackNavigator();
 
 export const StackNavigator = () => {
+  const { colors } = useContext(ThemeContext);
+
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        cardStyle: {
+          backgroundColor: colors.background,
+        },
       }}
     >
       <Stack.Screen
@@ -31,6 +40,7 @@ export const StackNavigator = () => {
         name='Animation102Screen'
         component={Animation102Screen}
       />
+
       <Stack.Screen
         name='SwitchScreen'
         component={SwitchScreen}
@@ -43,6 +53,7 @@ export const StackNavigator = () => {
         name='TextInputScreen'
         component={TextInputScreen}
       />
+
       <Stack.Screen
         name='PullToRefreshScreen'
         component={PullToRefreshScreen}
@@ -58,6 +69,15 @@ export const StackNavigator = () => {
       <Stack.Screen
         name='InfiniteScrollScreen'
         component={InfiniteScrollScreen}
+      />
+
+      <Stack.Screen
+        name='SlidesScreen'
+        component={SlidesScreen}
+      />
+      <Stack.Screen
+        name='ChangeThemeScreen'
+        component={ChangeThemeScreen}
       />
     </Stack.Navigator>
   );

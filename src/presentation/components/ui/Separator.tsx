@@ -1,11 +1,14 @@
-import { View, StyleProp, ViewStyle } from 'react-native';
-import { colors } from '../../../config/theme/theme';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import { useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
 
 interface Props {
   style?: StyleProp<ViewStyle>;
 }
 
 export const Separator = ({ style }: Props) => {
+  const { colors } = useContext(ThemeContext);
+
   return (
     <View
       style={{
@@ -19,6 +22,7 @@ export const Separator = ({ style }: Props) => {
             width: '80%',
             height: 1,
             backgroundColor: colors.text,
+            opacity: 0.1,
             marginVertical: 8,
           },
           style,
